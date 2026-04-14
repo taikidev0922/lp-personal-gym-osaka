@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
   // ===== スクロールアニメーション =====
-  const fadeTargets = document.querySelectorAll(
+  var fadeTargets = document.querySelectorAll(
     '.target-item, .reason-card, .result-item, .pricing-card, .faq-item'
   );
 
@@ -11,68 +11,58 @@ document.addEventListener('DOMContentLoaded', function () {
     el.classList.add('fade-in');
   });
 
-  const observer = new IntersectionObserver(
-    function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.12 }
-  );
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
 
-  fadeTargets.forEach(function (el) {
-    observer.observe(el);
-  });
+  fadeTargets.forEach(function (el) { observer.observe(el); });
 
 
-  // ===== FAQアコーディオン（スムーズ開閉） =====
+  // ===== FAQアコーディオン =====
+  // CSSで max-height: 0 / is-open で開閉する方式
   document.querySelectorAll('.faq-q').forEach(function (question) {
-    const answer = question.nextElementSibling;
-    if (!answer) return;
-
-    // 初期状態：FAは非表示
-    answer.style.maxHeight = '0';
-    answer.style.overflow = 'hidden';
-    answer.style.transition = 'max-height 0.3s ease, padding 0.3s ease';
-    answer.style.paddingTop = '0';
-    answer.style.paddingBottom = '0';
-
+    question.setAttribute('role', 'button');
     question.setAttribute('aria-expanded', 'false');
-    question.style.cursor = 'pointer';
+    question.setAttribute('tabindex', '0');
 
-    question.addEventListener('click', function () {
-      const isOpen = question.getAttribute('aria-expanded') === 'true';
+    function toggle() {
+      var item = question.closest('.faq-item');
+      var isOpen = item.classList.contains('is-open');
 
-      if (isOpen) {
-        answer.style.maxHeight = '0';
-        answer.style.paddingTop = '0';
-        answer.style.paddingBottom = '0';
-        question.setAttribute('aria-expanded', 'false');
-      } else {
-        answer.style.maxHeight = answer.scrollHeight + 60 + 'px';
-        answer.style.paddingTop = '18px';
-        answer.style.paddingBottom = '18px';
+      // 他を閉じる
+      document.querySelectorAll('.faq-item.is-open').forEach(function (openItem) {
+        openItem.classList.remove('is-open');
+        openItem.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+
+      if (!isOpen) {
+        item.classList.add('is-open');
         question.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    question.addEventListener('click', toggle);
+    question.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggle();
       }
     });
   });
 
 
-  // ===== LINEボタンのクリック計測（GA4 イベント） =====
+  // ===== LINEボタン クリック計測（GA4） =====
   document.querySelectorAll('.line-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      var label = btn.closest('section')
-        ? btn.closest('section').id || 'unknown'
-        : 'unknown';
-
+      var section = btn.closest('section');
+      var label = section ? (section.id || 'unknown') : 'sticky';
       if (typeof gtag === 'function') {
-        gtag('event', 'line_click', {
-          event_category: 'CTA',
-          event_label: label,
-        });
+        gtag('event', 'line_click', { event_category: 'CTA', event_label: label });
       }
     });
   });

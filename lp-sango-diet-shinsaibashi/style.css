@@ -5,11 +5,10 @@
 
 /* ===== CSS変数 ===== */
 :root {
-  --color-primary: #d4736a;      /* ローズピンク */
+  --color-primary: #d4736a;
   --color-primary-light: #f5e0de;
   --color-primary-dark: #b85c52;
-  --color-accent: #e8a598;
-  --color-line: #06C755;          /* LINE公式グリーン */
+  --color-line: #06C755;
   --color-line-dark: #05a748;
   --color-text: #333333;
   --color-text-sub: #666666;
@@ -23,17 +22,15 @@
 
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
 
-  --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 24px;
 
   --max-width: 1000px;
-  --padding-x: 20px;
+  --px: 20px;
 }
 
-/* ===== ベーススタイル ===== */
+/* ===== ベース ===== */
 body {
   font-family: var(--font-sans);
   color: var(--color-text);
@@ -45,10 +42,10 @@ body {
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 var(--padding-x);
+  padding: 0 var(--px);
 }
 
-/* ===== セクション共通 ===== */
+/* セクション共通 — hero / results / final-cta は個別に上書き */
 section {
   padding: 60px 0;
 }
@@ -58,7 +55,7 @@ section {
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--color-text);
-  margin-bottom: 40px;
+  margin-bottom: 36px;
   line-height: 1.4;
 }
 
@@ -71,15 +68,10 @@ section {
   margin-bottom: 6px;
 }
 
-.section-title--light {
-  color: #fff;
-}
+.section-title--light { color: #fff; }
+.section-title--light .section-title-en { color: rgba(255,255,255,0.7); }
 
-.section-title--light .section-title-en {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-/* ===== LINEボタン共通 ===== */
+/* ===== LINEボタン ===== */
 .line-btn {
   display: inline-flex;
   align-items: center;
@@ -89,25 +81,21 @@ section {
   color: #fff;
   font-weight: 700;
   border-radius: 50px;
-  padding: 16px 32px;
+  padding: 16px 28px;
   font-size: 1rem;
-  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 16px rgba(6, 199, 85, 0.35);
-  width: 100%;
-  max-width: 360px;
-  text-align: center;
+  transition: background-color 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(6,199,85,0.35);
+  /* width指定なし — 各配置で個別に制御 */
 }
 
 .line-btn:hover,
 .line-btn:focus {
   background-color: var(--color-line-dark);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(6, 199, 85, 0.45);
+  box-shadow: 0 6px 20px rgba(6,199,85,0.45);
 }
 
-.line-btn:active {
-  transform: translateY(0);
-}
+.line-btn:active { transform: translateY(0); }
 
 .line-icon {
   flex-shrink: 0;
@@ -118,15 +106,15 @@ section {
 /* ===== 固定LINEボタン ===== */
 .sticky-line-wrap {
   position: fixed;
-  bottom: 20px;
+  bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s;
   width: calc(100% - 32px);
-  max-width: 400px;
+  max-width: 380px;
 }
 
 .sticky-line-wrap.visible {
@@ -134,16 +122,20 @@ section {
   pointer-events: auto;
 }
 
-.sticky-line-btn {
+.sticky-line-wrap .line-btn {
+  width: 100%;
   font-size: 0.95rem;
-  padding: 14px 24px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  padding: 14px 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
 }
 
-/* ===== ファーストビュー ===== */
+/* ===== ヒーロー ===== */
 .hero {
+  /* section の padding を上書き — hero-content 内で管理 */
+  padding: 0;
   position: relative;
-  min-height: 100svh;
+  min-height: 100vh;        /* フォールバック */
+  min-height: 100svh;       /* モダンブラウザ */
   background: linear-gradient(135deg, #f5e0de 0%, #fce9e6 40%, #fdf0ee 100%);
   display: flex;
   align-items: center;
@@ -155,32 +147,20 @@ section {
   position: absolute;
   top: -60px;
   right: -60px;
-  width: 280px;
-  height: 280px;
-  background: radial-gradient(circle, rgba(212, 115, 106, 0.15) 0%, transparent 70%);
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(212,115,106,0.15) 0%, transparent 70%);
   border-radius: 50%;
+  pointer-events: none;
 }
 
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: -40px;
-  left: -40px;
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle, rgba(212, 115, 106, 0.1) 0%, transparent 70%);
-  border-radius: 50%;
-}
-
-.hero-bg-overlay {
-  display: none;
-}
+.hero-bg-overlay { display: none; }
 
 .hero-content {
   position: relative;
   z-index: 1;
-  padding: 80px var(--padding-x) 100px;
   width: 100%;
+  padding: 72px var(--px) 96px;
 }
 
 .hero-label {
@@ -190,7 +170,7 @@ section {
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.05em;
-  padding: 5px 14px;
+  padding: 4px 14px;
   border-radius: 50px;
   margin-bottom: 16px;
 }
@@ -199,7 +179,7 @@ section {
   font-family: var(--font-serif);
   font-size: 2rem;
   font-weight: 700;
-  line-height: 1.3;
+  line-height: 1.35;
   color: var(--color-text);
   margin-bottom: 8px;
 }
@@ -207,30 +187,29 @@ section {
 .hero-title em {
   font-style: normal;
   color: var(--color-primary-dark);
-  font-size: 2.2rem;
+  font-size: 2.15rem;
 }
 
 .hero-title-sub {
   display: block;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-family: var(--font-sans);
   font-weight: 700;
   color: var(--color-text-sub);
-  margin-top: 8px;
+  margin-top: 10px;
   line-height: 1.5;
 }
 
 .hero-points {
-  margin: 24px 0 32px;
+  margin: 22px 0 28px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
 .hero-points li {
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   font-weight: 500;
-  color: var(--color-text);
   display: flex;
   align-items: flex-start;
   gap: 8px;
@@ -240,13 +219,14 @@ section {
   color: var(--color-primary);
   font-weight: 700;
   flex-shrink: 0;
-  margin-top: 1px;
+  line-height: 1.8;
 }
 
 .hero-line-btn {
-  font-size: 1.05rem;
-  padding: 18px 32px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 340px;
+  font-size: 1rem;
+  padding: 17px 24px;
 }
 
 .hero-note {
@@ -254,135 +234,116 @@ section {
   font-size: 0.75rem;
   color: var(--color-text-sub);
   text-align: center;
+  max-width: 340px;
 }
 
 /* ===== こんな方へ ===== */
-.target {
-  background-color: var(--color-bg-soft);
-}
+.target { background-color: var(--color-bg-soft); }
 
 .target-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 32px;
+  gap: 10px;
+  margin-bottom: 28px;
 }
 
 .target-item {
   background-color: #fff;
   border: 1.5px solid var(--color-border);
   border-radius: var(--radius-md);
-  padding: 18px 14px;
+  padding: 16px 12px;
   text-align: center;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-.target-item:hover {
-  border-color: var(--color-primary);
-  box-shadow: var(--shadow-sm);
 }
 
 .target-emoji {
   display: block;
-  font-size: 2rem;
+  font-size: 1.8rem;
   margin-bottom: 8px;
 }
 
 .target-item p {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   line-height: 1.5;
-  color: var(--color-text);
 }
 
-.target-item strong {
-  color: var(--color-primary-dark);
-}
+.target-item strong { color: var(--color-primary-dark); }
 
 .target-cta-box {
   background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
   border-radius: var(--radius-md);
-  padding: 24px 20px;
+  padding: 22px 20px;
   text-align: center;
 }
 
 .target-cta-text {
   color: #fff;
   font-weight: 700;
-  font-size: 1.05rem;
-  line-height: 1.6;
+  font-size: 1rem;
+  line-height: 1.7;
 }
 
 /* ===== 選ばれる理由 ===== */
-.reasons {
-  background-color: #fff;
-}
+.reasons { background-color: #fff; }
 
 .reasons-grid {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 
 .reason-card {
   background-color: var(--color-bg-soft);
   border-radius: var(--radius-lg);
-  padding: 28px 24px;
+  padding: 24px 20px;
   border-left: 4px solid var(--color-primary);
   position: relative;
 }
 
 .reason-num {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 2.5rem;
+  top: 16px;
+  right: 16px;
+  font-size: 2.2rem;
   font-weight: 900;
   color: var(--color-primary-light);
   line-height: 1;
   font-family: var(--font-serif);
+  user-select: none;
 }
 
-.reason-icon-wrap {
-  margin-bottom: 12px;
-}
-
-.reason-icon {
-  font-size: 2.2rem;
-}
+.reason-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
 
 .reason-title {
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 700;
-  color: var(--color-text);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   line-height: 1.4;
 }
 
 .reason-text {
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   color: var(--color-text-sub);
   line-height: 1.8;
 }
 
 /* ===== 実績 ===== */
 .results {
+  padding: 56px 0;   /* section の 60px を個別指定で上書き */
   background: linear-gradient(135deg, var(--color-bg-dark) 0%, #5c3d3b 100%);
 }
 
 .results-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-bottom: 16px;
+  gap: 12px;
+  margin-bottom: 14px;
 }
 
-.result-item {
-  text-align: center;
-}
+.result-item { text-align: center; }
 
 .result-num {
   display: block;
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: 900;
   color: #fff;
   line-height: 1.1;
@@ -390,43 +351,45 @@ section {
 }
 
 .result-num small {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 700;
 }
 
 .result-label {
   display: block;
-  font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.7);
   margin-top: 6px;
   line-height: 1.4;
 }
 
 .results-note {
   text-align: center;
-  font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.5);
 }
 
 /* ===== 料金 ===== */
-.pricing {
-  background-color: var(--color-bg-soft);
-}
+.pricing { background-color: var(--color-bg-soft); }
 
 .pricing-grid {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 28px;          /* バッジ分の余白を確保 */
   margin-bottom: 20px;
+  /* overflow: visible を明示 */
+  overflow: visible;
 }
 
 .pricing-card {
   background-color: #fff;
   border-radius: var(--radius-lg);
-  padding: 28px 22px;
+  padding: 28px 20px 24px;
   border: 2px solid var(--color-border);
   position: relative;
   box-shadow: var(--shadow-sm);
+  margin-top: 14px;   /* バッジが上に飛び出す分 */
+  overflow: visible;
 }
 
 .pricing-card:first-child {
@@ -436,52 +399,48 @@ section {
 
 .pricing-badge {
   position: absolute;
-  top: -13px;
+  top: -14px;
   left: 50%;
   transform: translateX(-50%);
   background-color: var(--color-primary);
   color: #fff;
   font-size: 0.72rem;
   font-weight: 700;
-  padding: 4px 16px;
+  padding: 4px 18px;
   border-radius: 50px;
   white-space: nowrap;
 }
 
-.pricing-badge--trial {
-  background-color: var(--color-line);
-}
+.pricing-badge--trial { background-color: var(--color-line); }
 
 .pricing-name {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 700;
-  color: var(--color-text);
   text-align: center;
   margin-bottom: 4px;
 }
 
 .pricing-period {
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--color-text-sub);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .pricing-price {
   text-align: center;
-  font-size: 1.9rem;
+  font-size: 1.8rem;
   font-weight: 900;
   color: var(--color-primary-dark);
   font-family: var(--font-serif);
-  margin-bottom: 18px;
+  margin-bottom: 16px;
+  line-height: 1.2;
 }
 
-.pricing-price--free {
-  color: var(--color-line-dark);
-}
+.pricing-price--free { color: var(--color-line-dark); }
 
 .pricing-unit {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 500;
   color: var(--color-text-sub);
 }
@@ -494,33 +453,30 @@ section {
 }
 
 .pricing-features li {
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   color: var(--color-text);
-  padding-left: 4px;
 }
 
 .pricing-line-btn {
+  width: 100%;
   font-size: 0.95rem;
-  padding: 15px 24px;
-  max-width: 100%;
+  padding: 15px 20px;
 }
 
 .pricing-note {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: var(--color-text-sub);
   text-align: center;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 /* ===== FAQ ===== */
-.faq {
-  background-color: #fff;
-}
+.faq { background-color: #fff; }
 
 .faq-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .faq-item {
@@ -529,57 +485,63 @@ section {
   overflow: hidden;
 }
 
-.faq-q,
-.faq-a {
-  display: flex;
-  gap: 14px;
-  padding: 18px 16px;
-  font-size: 0.9rem;
-  line-height: 1.7;
-  align-items: flex-start;
-}
-
 .faq-q {
-  background-color: var(--color-primary-light);
+  display: flex;
+  gap: 12px;
+  padding: 16px 14px;
+  font-size: 0.875rem;
   font-weight: 700;
+  line-height: 1.6;
+  align-items: flex-start;
+  background-color: var(--color-primary-light);
   color: var(--color-text);
   cursor: pointer;
+  user-select: none;
 }
 
+/* FAQの回答 — JSで開閉するためCSS側でも初期非表示 */
 .faq-a {
+  display: flex;
+  gap: 12px;
+  padding: 0 14px;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  align-items: flex-start;
   background-color: #fff;
   color: var(--color-text-sub);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+}
+
+/* JSでクラス付与して開く */
+.faq-item.is-open .faq-a {
+  max-height: 400px;
+  padding: 16px 14px;
 }
 
 .faq-q-icon,
 .faq-a-icon {
   flex-shrink: 0;
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 900;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   margin-top: 1px;
 }
 
-.faq-q-icon {
-  background-color: var(--color-primary);
-  color: #fff;
-}
-
-.faq-a-icon {
-  background-color: #e8e8e8;
-  color: var(--color-text);
-}
+.faq-q-icon { background-color: var(--color-primary); color: #fff; }
+.faq-a-icon { background-color: #e8e8e8; color: var(--color-text); }
 
 /* ===== 最終CTA ===== */
 .final-cta {
+  padding: 72px 0 96px;
   background: linear-gradient(160deg, var(--color-primary-light) 0%, #fff5f4 100%);
   text-align: center;
-  padding: 80px 0 100px;
 }
 
 .final-cta-label {
@@ -589,37 +551,38 @@ section {
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.05em;
-  padding: 5px 16px;
+  padding: 4px 16px;
   border-radius: 50px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .final-cta-title {
   font-family: var(--font-serif);
-  font-size: 1.7rem;
+  font-size: 1.65rem;
   font-weight: 700;
-  line-height: 1.4;
+  line-height: 1.45;
   color: var(--color-text);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .final-cta-text {
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   color: var(--color-text-sub);
   line-height: 1.8;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .final-line-btn {
-  font-size: 1.1rem;
-  padding: 20px 36px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 340px;
+  font-size: 1.05rem;
+  padding: 18px 24px;
   margin: 0 auto;
 }
 
 .final-cta-note {
-  margin-top: 16px;
-  font-size: 0.8rem;
+  margin-top: 14px;
+  font-size: 0.78rem;
   color: var(--color-text-sub);
   line-height: 1.7;
 }
@@ -627,7 +590,7 @@ section {
 /* ===== フッター ===== */
 .footer {
   background-color: var(--color-bg-dark);
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255,255,255,0.7);
   padding: 40px 0;
   text-align: center;
 }
@@ -635,45 +598,43 @@ section {
 .footer-name {
   font-weight: 700;
   color: #fff;
-  font-size: 1rem;
-  margin-bottom: 8px;
+  font-size: 0.95rem;
+  margin-bottom: 6px;
 }
 
 .footer-address,
 .footer-hours {
-  font-size: 0.8rem;
-  margin-bottom: 4px;
+  font-size: 0.78rem;
+  margin-bottom: 3px;
 }
 
 .footer-nav {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 16px;
-  margin: 20px 0;
+  gap: 14px;
+  margin: 18px 0;
 }
 
 .footer-nav a {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.6);
   transition: color 0.2s;
 }
 
-.footer-nav a:hover {
-  color: #fff;
-}
+.footer-nav a:hover { color: #fff; }
 
 .footer-copy {
-  font-size: 0.72rem;
-  color: rgba(255, 255, 255, 0.35);
-  margin-top: 8px;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.3);
+  margin-top: 6px;
 }
 
-/* ===== アニメーション ===== */
+/* ===== スクロールアニメーション ===== */
 .fade-in {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(18px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
 }
 
 .fade-in.is-visible {
@@ -681,146 +642,92 @@ section {
   transform: translateY(0);
 }
 
-/* ===== タブレット以上 ===== */
+/* ===== タブレット（640px〜） ===== */
 @media (min-width: 640px) {
-  :root {
-    --padding-x: 32px;
-  }
+  :root { --px: 32px; }
 
-  body {
-    font-size: 16px;
-  }
+  body { font-size: 16px; }
 
-  section {
-    padding: 80px 0;
-  }
+  section { padding: 80px 0; }
 
-  .section-title {
-    font-size: 1.75rem;
-  }
+  .section-title { font-size: 1.7rem; }
 
   .hero-content {
-    padding: 100px var(--padding-x) 120px;
+    padding: 96px var(--px) 112px;
     max-width: 640px;
   }
 
-  .hero-title {
-    font-size: 2.5rem;
-  }
+  .hero-title { font-size: 2.4rem; }
+  .hero-title em { font-size: 2.65rem; }
+  .hero-line-btn { max-width: 360px; }
 
-  .hero-title em {
-    font-size: 2.8rem;
-  }
+  .target-list { grid-template-columns: repeat(3, 1fr); gap: 12px; }
 
-  .target-list {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  .reasons-grid { gap: 20px; }
 
-  .reasons-grid {
-    gap: 24px;
-  }
-
-  .reason-card {
-    padding: 32px 28px;
-  }
+  .results { padding: 72px 0; }
+  .result-num { font-size: 2.6rem; }
 
   .pricing-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 28px;
   }
 
+  /* 無料体験カードを下段中央に */
   .pricing-card:last-child {
     grid-column: 1 / -1;
-    max-width: 500px;
-    margin: 0 auto;
+    max-width: 460px;
     width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  .results-grid {
-    gap: 24px;
-  }
-
-  .result-num {
-    font-size: 2.8rem;
-  }
+  .final-cta { padding: 88px 0 112px; }
+  .final-line-btn { max-width: 380px; }
 }
 
-/* ===== デスクトップ ===== */
+/* ===== デスクトップ（960px〜） ===== */
 @media (min-width: 960px) {
-  :root {
-    --padding-x: 40px;
-  }
+  :root { --px: 40px; }
 
-  section {
-    padding: 100px 0;
-  }
+  section { padding: 100px 0; }
 
-  .section-title {
-    font-size: 2rem;
-    margin-bottom: 56px;
-  }
+  .section-title { font-size: 1.9rem; margin-bottom: 48px; }
 
-  .hero {
-    min-height: 95vh;
-  }
+  .hero { min-height: 92vh; min-height: 92svh; }
+  .hero-content { max-width: 660px; padding: 112px var(--px); }
+  .hero-title { font-size: 2.9rem; }
+  .hero-title em { font-size: 3.2rem; }
+  .hero-points li { font-size: 0.95rem; }
+  .hero-line-btn { max-width: 380px; }
 
-  .hero-content {
-    max-width: 700px;
-    padding: 120px var(--padding-x);
-  }
+  .target-list { grid-template-columns: repeat(3, 1fr); }
 
-  .hero-title {
-    font-size: 3rem;
-  }
+  .reasons-grid { flex-direction: row; gap: 20px; }
+  .reason-card { flex: 1; }
 
-  .hero-title em {
-    font-size: 3.4rem;
-  }
-
-  .hero-points li {
-    font-size: 1rem;
-  }
-
-  .target-list {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .reasons-grid {
-    flex-direction: row;
-    gap: 24px;
-  }
-
-  .reason-card {
-    flex: 1;
-  }
+  .results { padding: 88px 0; }
+  .results-grid { gap: 32px; }
+  .result-num { font-size: 3rem; }
 
   .pricing-grid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
   }
 
   .pricing-card:last-child {
     grid-column: auto;
     max-width: none;
-    margin: 0;
+    margin-left: 0;
+    margin-right: 0;
   }
 
-  .faq-list {
-    gap: 16px;
-  }
+  .faq-q, .faq-a { font-size: 0.925rem; }
+  .faq-item.is-open .faq-a { padding: 18px 20px; }
+  .faq-q { padding: 18px 20px; }
 
-  .faq-q,
-  .faq-a {
-    font-size: 0.95rem;
-    padding: 20px 24px;
-  }
-
-  .final-cta-title {
-    font-size: 2.2rem;
-  }
-
-  .final-line-btn {
-    font-size: 1.2rem;
-    padding: 22px 48px;
-  }
+  .final-cta { padding: 100px 0 120px; }
+  .final-cta-title { font-size: 2.1rem; }
+  .final-line-btn { max-width: 400px; font-size: 1.1rem; padding: 20px 32px; }
 }
