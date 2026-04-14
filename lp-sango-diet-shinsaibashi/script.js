@@ -1,69 +1,70 @@
-// script.js - LP固有スクリプト
-
 document.addEventListener('DOMContentLoaded', function () {
 
-  // ===== スクロールアニメーション =====
-  var fadeTargets = document.querySelectorAll(
-    '.target-item, .reason-card, .result-item, .pricing-card, .faq-item'
-  );
+  /* ---- 固定CTAボタン: スクロール300px で出現 ---- */
+  var fixedCta = document.getElementById('fixedCta');
+  if (fixedCta) {
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 300) {
+        fixedCta.classList.add('is-show');
+      } else {
+        fixedCta.classList.remove('is-show');
+      }
+    }, { passive: true });
+  }
 
-  fadeTargets.forEach(function (el) {
-    el.classList.add('fade-in');
+  /* ---- FAQアコーディオン ---- */
+  document.querySelectorAll('.faq__q').forEach(function (q) {
+    q.setAttribute('role', 'button');
+    q.setAttribute('tabindex', '0');
+
+    function toggle() {
+      var item = q.closest('.faq__item');
+      var opening = !item.classList.contains('is-open');
+
+      /* 他を閉じる */
+      document.querySelectorAll('.faq__item.is-open').forEach(function (el) {
+        el.classList.remove('is-open');
+        el.querySelector('.faq__q').setAttribute('aria-expanded', 'false');
+      });
+
+      if (opening) {
+        item.classList.add('is-open');
+        q.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    q.addEventListener('click', toggle);
+    q.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
   });
 
-  var observer = new IntersectionObserver(function (entries) {
+  /* ---- スクロールフェードイン ---- */
+  var fadeItems = document.querySelectorAll(
+    '.target__item, .reason-card, .results__item, .plan-card, .faq__item'
+  );
+  fadeItems.forEach(function (el) { el.classList.add('js-fade'); });
+
+  var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
+        entry.target.classList.add('is-show');
+        io.unobserve(entry.target);
       }
     });
   }, { threshold: 0.1 });
 
-  fadeTargets.forEach(function (el) { observer.observe(el); });
+  fadeItems.forEach(function (el) { io.observe(el); });
 
-
-  // ===== FAQアコーディオン =====
-  // CSSで max-height: 0 / is-open で開閉する方式
-  document.querySelectorAll('.faq-q').forEach(function (question) {
-    question.setAttribute('role', 'button');
-    question.setAttribute('aria-expanded', 'false');
-    question.setAttribute('tabindex', '0');
-
-    function toggle() {
-      var item = question.closest('.faq-item');
-      var isOpen = item.classList.contains('is-open');
-
-      // 他を閉じる
-      document.querySelectorAll('.faq-item.is-open').forEach(function (openItem) {
-        openItem.classList.remove('is-open');
-        openItem.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
-      });
-
-      if (!isOpen) {
-        item.classList.add('is-open');
-        question.setAttribute('aria-expanded', 'true');
-      }
-    }
-
-    question.addEventListener('click', toggle);
-    question.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        toggle();
-      }
-    });
-  });
-
-
-  // ===== LINEボタン クリック計測（GA4） =====
-  document.querySelectorAll('.line-btn').forEach(function (btn) {
+  /* ---- LINEボタン GA4 計測 ---- */
+  document.querySelectorAll('.btn-line').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      var section = btn.closest('section');
-      var label = section ? (section.id || 'unknown') : 'sticky';
-      if (typeof gtag === 'function') {
-        gtag('event', 'line_click', { event_category: 'CTA', event_label: label });
-      }
+      if (typeof gtag !== 'function') return;
+      var sec = btn.closest('section');
+      gtag('event', 'line_click', {
+        event_category: 'CTA',
+        event_label: sec ? sec.className.split(' ')[0] : 'fixed'
+      });
     });
   });
 

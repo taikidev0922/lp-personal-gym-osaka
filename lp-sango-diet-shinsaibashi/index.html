@@ -3,312 +3,257 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="新大阪・東三国エリアのパーソナルトレーニングジム。産後ダイエットに特化した女性専用プログラム。妊娠前の体型を取り戻したいママを全力でサポートします。無料体験受付中。" />
-  <meta name="robots" content="index, follow" />
-
-  <!-- OGP -->
-  <meta property="og:title" content="産後ダイエット専門パーソナルジム｜新大阪・淀川区" />
-  <meta property="og:description" content="産後6ヶ月〜のママに特化したパーソナルトレーニング。骨盤矯正×食事管理×筋トレで妊娠前の体型へ。新大阪・東三国エリア。まず無料体験から。" />
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="ja_JP" />
-
+  <meta name="description" content="新大阪・東三国エリアのパーソナルトレーニングジム。産後ダイエット専門プログラムで妊娠前の体型を取り戻す。骨盤ケア×食事管理×トレーニングのトータルサポート。無料体験受付中。" />
   <title>産後ダイエット専門パーソナルジム｜新大阪・淀川区【無料体験受付中】</title>
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet" />
-
-  <!-- Reset & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../shared/reset.css" />
   <link rel="stylesheet" href="style.css" />
-
-  <!-- GA4（本番時に測定IDを差し替え） -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script> -->
-
-  <!-- Microsoft Clarity（本番時にIDを差し替え） -->
-  <!-- <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "XXXXXXXXXX");
-  </script> -->
 </head>
 <body>
 
-  <!-- ===== 固定LINEボタン（スクロール後に表示） ===== -->
-  <div id="sticky-line-btn" class="sticky-line-wrap">
-    <a href="https://line.me/R/ti/p/@XXXXXXXX" class="line-btn sticky-line-btn" target="_blank" rel="noopener noreferrer">
-      <span class="line-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 2C6.48 2 2 6.03 2 11c0 2.95 1.55 5.57 3.97 7.28L5 21l2.93-1.4C9.19 20.18 10.57 20.5 12 20.5c5.52 0 10-4.03 10-9s-4.48-9-10-9zm1.14 12.13l-2.63-2.8-4.97 2.8 5.44-5.78 2.68 2.8 4.92-2.8-5.44 5.78z"/></svg>
-      </span>
+  <!-- ★ 固定LINE CTAボタン（スクロールで出現） -->
+  <div class="fixed-cta" id="fixedCta">
+    <a href="https://line.me/R/ti/p/@XXXXXXXX" class="btn-line btn-line--fixed" target="_blank" rel="noopener noreferrer">
+      <svg class="line-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path fill="#fff" d="M24 4C12.95 4 4 11.86 4 21.5c0 5.7 3.1 10.77 7.97 14.06L10 40l5.53-2.72C17.56 38.38 20.7 39 24 39c11.05 0 20-7.86 20-17.5S35.05 4 24 4z"/><path fill="#06C755" d="M24 7c-9.37 0-17 6.5-17 14.5 0 4.87 2.73 9.2 7 12.1l.6 5.4 4.7-2.3C20.96 37.5 22.46 38 24 38c9.37 0 17-6.5 17-14.5S33.37 7 24 7z"/><path fill="#fff" d="M34.5 25.5h-5v-7h-2v9h7zM21 18.5h-2v9h2zM28.5 22l-4-3.5v7l4-3.5z"/></svg>
       無料体験をLINEで申し込む
     </a>
   </div>
 
-  <!-- ===== ファーストビュー ===== -->
-  <section class="hero" id="top">
-    <div class="hero-bg-overlay"></div>
-    <div class="hero-content">
-      <p class="hero-label">新大阪・東三国エリア｜産後ダイエット専門</p>
-      <h1 class="hero-title">
-        産後の体型が<br />
-        <em>気になるママへ。</em><br />
-        <span class="hero-title-sub">もう一度、好きな服を着よう</span>
+  <!-- ========== FV ========== -->
+  <section class="fv">
+    <div class="fv__inner">
+      <p class="fv__badge">新大阪・東三国エリア｜産後ダイエット専門</p>
+      <h1 class="fv__title">
+        産後の体型が<br>
+        <em>気になるママへ。</em>
       </h1>
-      <ul class="hero-points">
-        <li><span class="check">✓</span> 骨盤ケア×筋トレ×食事管理の3つを同時サポート</li>
-        <li><span class="check">✓</span> 産後6ヶ月〜OKの安心プログラム</li>
-        <li><span class="check">✓</span> 新大阪・東三国から徒歩圏内</li>
+      <p class="fv__sub">もう一度、好きな服を着よう</p>
+      <ul class="fv__checks">
+        <li><span class="check-icon">✓</span>骨盤ケア × 筋トレ × 食事管理を同時サポート</li>
+        <li><span class="check-icon">✓</span>産後6ヶ月〜OK・子連れ歓迎</li>
+        <li><span class="check-icon">✓</span>新大阪・東三国から徒歩10分以内</li>
       </ul>
-      <a href="https://line.me/R/ti/p/@XXXXXXXX" class="line-btn hero-line-btn" target="_blank" rel="noopener noreferrer">
-        <span class="line-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 2C6.48 2 2 6.03 2 11c0 2.95 1.55 5.57 3.97 7.28L5 21l2.93-1.4C9.19 20.18 10.57 20.5 12 20.5c5.52 0 10-4.03 10-9s-4.48-9-10-9zm1.14 12.13l-2.63-2.8-4.97 2.8 5.44-5.78 2.68 2.8 4.92-2.8-5.44 5.78z"/></svg>
-        </span>
+      <a href="https://line.me/R/ti/p/@XXXXXXXX" class="btn-line" target="_blank" rel="noopener noreferrer">
+        <svg class="line-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path fill="#fff" d="M24 4C12.95 4 4 11.86 4 21.5c0 5.7 3.1 10.77 7.97 14.06L10 40l5.53-2.72C17.56 38.38 20.7 39 24 39c11.05 0 20-7.86 20-17.5S35.05 4 24 4z"/><path fill="#06C755" d="M24 7c-9.37 0-17 6.5-17 14.5 0 4.87 2.73 9.2 7 12.1l.6 5.4 4.7-2.3C20.96 37.5 22.46 38 24 38c9.37 0 17-6.5 17-14.5S33.37 7 24 7z"/><path fill="#fff" d="M34.5 25.5h-5v-7h-2v9h7zM21 18.5h-2v9h2zM28.5 22l-4-3.5v7l4-3.5z"/></svg>
         無料体験をLINEで申し込む
       </a>
-      <p class="hero-note">※ 体験は無料・勧誘なし。まずはお気軽にどうぞ。</p>
+      <p class="fv__note">※ 体験は無料・勧誘なし。お気軽にどうぞ。</p>
     </div>
   </section>
 
-  <!-- ===== こんな方へ ===== -->
-  <section class="target" id="target">
-    <div class="container">
-      <h2 class="section-title">
-        <span class="section-title-en">FOR YOU</span>
-        こんなお悩みはありませんか？
-      </h2>
-      <ul class="target-list">
-        <li class="target-item">
-          <span class="target-emoji">😔</span>
-          <p>出産してから体重が<strong>全然戻らない</strong></p>
+  <!-- ========== こんな方へ ========== -->
+  <section class="target">
+    <div class="wrap">
+      <p class="sec-en">FOR YOU</p>
+      <h2 class="sec-title">こんなお悩みはありませんか？</h2>
+      <ul class="target__list">
+        <li class="target__item">
+          <span class="target__emoji">😔</span>
+          <p>出産後から体重が<strong>全然戻らない</strong></p>
         </li>
-        <li class="target-item">
-          <span class="target-emoji">👗</span>
-          <p>妊娠前の服が<strong>もう入らない</strong></p>
+        <li class="target__item">
+          <span class="target__emoji">👗</span>
+          <p>妊娠前の服が<strong>入らなくなった</strong></p>
         </li>
-        <li class="target-item">
-          <span class="target-emoji">🤱</span>
-          <p>育児で忙しくて<strong>自分の時間が取れない</strong></p>
+        <li class="target__item">
+          <span class="target__emoji">🤱</span>
+          <p>育児が忙しくて<strong>自分の時間が取れない</strong></p>
         </li>
-        <li class="target-item">
-          <span class="target-emoji">🏋️</span>
-          <p>一人でジムへ行っても<strong>何をすればいいか分からない</strong></p>
+        <li class="target__item">
+          <span class="target__emoji">🏋️</span>
+          <p>ジムへ行っても<strong>何をすればいいか分からない</strong></p>
         </li>
-        <li class="target-item">
-          <span class="target-emoji">🍽️</span>
+        <li class="target__item">
+          <span class="target__emoji">🍽️</span>
           <p>食事制限だけでは<strong>続かなかった</strong></p>
         </li>
-        <li class="target-item">
-          <span class="target-emoji">💪</span>
+        <li class="target__item">
+          <span class="target__emoji">💪</span>
           <p>産後の<strong>骨盤のゆがみ・腰痛</strong>が気になる</p>
         </li>
       </ul>
-      <div class="target-cta-box">
-        <p class="target-cta-text">ひとつでも当てはまるなら、<br />私たちにお任せください。</p>
+      <div class="target__cta">
+        <p>ひとつでも当てはまるなら、<br>私たちにお任せください。</p>
       </div>
     </div>
   </section>
 
-  <!-- ===== 選ばれる理由 ===== -->
-  <section class="reasons" id="reasons">
-    <div class="container">
-      <h2 class="section-title">
-        <span class="section-title-en">WHY CHOOSE US</span>
-        産後ママに選ばれる3つの理由
-      </h2>
-      <div class="reasons-grid">
+  <!-- ========== 選ばれる理由 ========== -->
+  <section class="reasons">
+    <div class="wrap">
+      <p class="sec-en">WHY CHOOSE US</p>
+      <h2 class="sec-title">産後ママに選ばれる3つの理由</h2>
+      <div class="reasons__grid">
 
         <div class="reason-card">
-          <div class="reason-num">01</div>
-          <div class="reason-icon-wrap">
-            <span class="reason-icon">🦴</span>
-          </div>
-          <h3 class="reason-title">産後専門の<br />骨盤ケア＋トレーニング</h3>
-          <p class="reason-text">産後の骨盤は開いたまま放置すると代謝が落ち、太りやすい体になります。骨盤ケアとインナーマッスル強化を組み合わせた専門プログラムで、根本から体質改善を目指します。</p>
+          <div class="reason-card__num">01</div>
+          <div class="reason-card__icon">🦴</div>
+          <h3 class="reason-card__title">産後専門の骨盤ケア<br>＋トレーニング</h3>
+          <p class="reason-card__text">産後の骨盤は開いたまま放置すると代謝が落ち、太りやすい体になります。骨盤ケアとインナーマッスル強化を組み合わせた専門プログラムで根本から体質改善します。</p>
         </div>
 
         <div class="reason-card">
-          <div class="reason-num">02</div>
-          <div class="reason-icon-wrap">
-            <span class="reason-icon">🥗</span>
-          </div>
-          <h3 class="reason-title">トレーニング＋食事管理で<br />リバウンドしない体へ</h3>
-          <p class="reason-text">授乳中・育児中のママの栄養バランスを考えた食事指導を個別にご提案。「食べながら痩せる」をコンセプトに、我慢しすぎない食事管理で健康的にダイエットします。</p>
+          <div class="reason-card__num">02</div>
+          <div class="reason-card__icon">🥗</div>
+          <h3 class="reason-card__title">食べながら痩せる<br>食事管理で<br>リバウンドしない体へ</h3>
+          <p class="reason-card__text">授乳中・育児中のママの栄養バランスを考えた食事指導を個別にご提案。我慢しすぎない食事管理で健康的にダイエットします。</p>
         </div>
 
         <div class="reason-card">
-          <div class="reason-num">03</div>
-          <div class="reason-icon-wrap">
-            <span class="reason-icon">📍</span>
-          </div>
-          <h3 class="reason-title">新大阪・東三国から<br />アクセス抜群の立地</h3>
-          <p class="reason-text">新大阪駅・東三国駅から徒歩10分以内。買い物ついでや、ちょっとしたすき間時間にも通いやすい立地です。お子様連れOKのマンツーマン個室トレーニングです。</p>
+          <div class="reason-card__num">03</div>
+          <div class="reason-card__icon">📍</div>
+          <h3 class="reason-card__title">新大阪・東三国から<br>アクセス抜群の立地</h3>
+          <p class="reason-card__text">新大阪駅・東三国駅から徒歩10分以内。完全個室のマンツーマントレーニングなので、お子様連れでも安心してご利用いただけます。</p>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- ===== 実績・数字 ===== -->
-  <section class="results" id="results">
-    <div class="container">
-      <h2 class="section-title section-title--light">
-        <span class="section-title-en">RESULTS</span>
-        数字で見る実績
-      </h2>
-      <div class="results-grid">
-        <div class="result-item">
-          <span class="result-num">97<small>%</small></span>
-          <span class="result-label">会員満足度</span>
+  <!-- ========== 実績 ========== -->
+  <section class="results">
+    <div class="wrap">
+      <p class="sec-en sec-en--light">RESULTS</p>
+      <h2 class="sec-title sec-title--light">数字で見る実績</h2>
+      <div class="results__grid">
+        <div class="results__item">
+          <strong>97<span>%</span></strong>
+          <p>会員満足度</p>
         </div>
-        <div class="result-item">
-          <span class="result-num">500<small>名以上</small></span>
-          <span class="result-label">産後ダイエット実績</span>
+        <div class="results__item">
+          <strong>500<span>名以上</span></strong>
+          <p>産後ダイエット実績</p>
         </div>
-        <div class="result-item">
-          <span class="result-num">-8<small>kg</small></span>
-          <span class="result-label">3ヶ月平均減量</span>
+        <div class="results__item">
+          <strong>-8<span>kg</span></strong>
+          <p>3ヶ月平均減量</p>
         </div>
       </div>
-      <p class="results-note">※ 2020年〜2024年実績。効果には個人差があります。</p>
+      <p class="results__note">※ 2020〜2024年実績。効果には個人差があります。</p>
     </div>
   </section>
 
-  <!-- ===== 料金・メニュー ===== -->
-  <section class="pricing" id="pricing">
-    <div class="container">
-      <h2 class="section-title">
-        <span class="section-title-en">PRICING</span>
-        料金・プラン
-      </h2>
-      <div class="pricing-grid">
+  <!-- ========== 料金 ========== -->
+  <section class="pricing">
+    <div class="wrap">
+      <p class="sec-en">PRICING</p>
+      <h2 class="sec-title">料金・プラン</h2>
+      <div class="pricing__grid">
 
-        <div class="pricing-card">
-          <div class="pricing-badge">人気No.1</div>
-          <h3 class="pricing-name">産後集中プラン</h3>
-          <p class="pricing-period">3ヶ月 / 月8回</p>
-          <p class="pricing-price">¥39,800<span class="pricing-unit">/月</span></p>
-          <ul class="pricing-features">
-            <li>✓ パーソナルトレーニング（60分×8回）</li>
-            <li>✓ 骨盤チェック＆ケア指導</li>
-            <li>✓ 個別食事プログラム作成</li>
-            <li>✓ LINEでの食事・体重管理サポート</li>
-            <li>✓ 体組成・姿勢定期チェック</li>
+        <div class="plan-card plan-card--popular">
+          <p class="plan-card__badge">人気 No.1</p>
+          <h3 class="plan-card__name">産後集中プラン</h3>
+          <p class="plan-card__period">3ヶ月 / 月8回</p>
+          <p class="plan-card__price">¥39,800<span>/月</span></p>
+          <ul class="plan-card__features">
+            <li>パーソナルトレーニング（60分×8回）</li>
+            <li>骨盤チェック＆ケア指導</li>
+            <li>個別食事プログラム作成</li>
+            <li>LINEでの食事・体重管理サポート</li>
+            <li>体組成・姿勢定期チェック</li>
           </ul>
         </div>
 
-        <div class="pricing-card pricing-card--basic">
-          <h3 class="pricing-name">スタンダードプラン</h3>
-          <p class="pricing-period">月 / 月4回</p>
-          <p class="pricing-price">¥22,800<span class="pricing-unit">/月</span></p>
-          <ul class="pricing-features">
-            <li>✓ パーソナルトレーニング（60分×4回）</li>
-            <li>✓ 骨盤チェック＆ケア指導</li>
-            <li>✓ 食事アドバイス</li>
-            <li>✓ LINEサポート</li>
+        <div class="plan-card">
+          <h3 class="plan-card__name">スタンダードプラン</h3>
+          <p class="plan-card__period">月 / 月4回</p>
+          <p class="plan-card__price">¥22,800<span>/月</span></p>
+          <ul class="plan-card__features">
+            <li>パーソナルトレーニング（60分×4回）</li>
+            <li>骨盤チェック＆ケア指導</li>
+            <li>食事アドバイス</li>
+            <li>LINEサポート</li>
           </ul>
         </div>
 
-        <div class="pricing-card pricing-card--trial">
-          <div class="pricing-badge pricing-badge--trial">まず試したい方</div>
-          <h3 class="pricing-name">無料体験</h3>
-          <p class="pricing-period">1回60分</p>
-          <p class="pricing-price pricing-price--free">¥0<span class="pricing-unit">（完全無料）</span></p>
-          <ul class="pricing-features">
-            <li>✓ カウンセリング（現状ヒアリング）</li>
-            <li>✓ 体組成・姿勢チェック</li>
-            <li>✓ 体験トレーニング30分</li>
-            <li>✓ プログラム提案</li>
+        <div class="plan-card plan-card--trial">
+          <p class="plan-card__badge plan-card__badge--green">まず試したい方</p>
+          <h3 class="plan-card__name">無料体験</h3>
+          <p class="plan-card__period">1回 60分</p>
+          <p class="plan-card__price plan-card__price--free">¥0<span>（完全無料）</span></p>
+          <ul class="plan-card__features">
+            <li>カウンセリング（現状ヒアリング）</li>
+            <li>体組成・姿勢チェック</li>
+            <li>体験トレーニング30分</li>
+            <li>プログラム提案</li>
           </ul>
-          <a href="https://line.me/R/ti/p/@XXXXXXXX" class="line-btn pricing-line-btn" target="_blank" rel="noopener noreferrer">
+          <a href="https://line.me/R/ti/p/@XXXXXXXX" class="btn-line btn-line--sm" target="_blank" rel="noopener noreferrer">
             LINEで無料体験を申し込む
           </a>
         </div>
 
       </div>
-      <p class="pricing-note">※ 入会金は別途11,000円（税込）かかります。体験後の勧誘・強引な入会促進は一切行いません。</p>
+      <p class="pricing__note">※ 入会金11,000円（税込）が別途かかります。体験後の強引な勧誘は一切行いません。</p>
     </div>
   </section>
 
-  <!-- ===== よくある質問 ===== -->
-  <section class="faq" id="faq">
-    <div class="container">
-      <h2 class="section-title">
-        <span class="section-title-en">FAQ</span>
-        よくある質問
-      </h2>
-      <dl class="faq-list">
+  <!-- ========== FAQ ========== -->
+  <section class="faq">
+    <div class="wrap">
+      <p class="sec-en">FAQ</p>
+      <h2 class="sec-title">よくある質問</h2>
+      <dl class="faq__list">
 
-        <div class="faq-item">
-          <dt class="faq-q">
-            <span class="faq-q-icon">Q</span>
-            産後どのくらいから通えますか？
+        <div class="faq__item">
+          <dt class="faq__q">
+            <span class="faq__q-icon">Q</span>
+            <span>産後どのくらいから通えますか？</span>
+            <span class="faq__arrow" aria-hidden="true"></span>
           </dt>
-          <dd class="faq-a">
-            <span class="faq-a-icon">A</span>
-            産後6ヶ月以降を推奨しています。産後6ヶ月未満の方はまず産婦人科の先生にご相談のうえ、許可が出てからご連絡ください。体験時に詳しいカウンセリングを行います。
+          <dd class="faq__a">
+            <span class="faq__a-icon">A</span>
+            <span>産後6ヶ月以降を推奨しています。6ヶ月未満の方はまず産婦人科の先生にご相談のうえ、許可が出てからご連絡ください。体験時に詳しいカウンセリングを行います。</span>
           </dd>
         </div>
 
-        <div class="faq-item">
-          <dt class="faq-q">
-            <span class="faq-q-icon">Q</span>
-            子ども連れで通えますか？
+        <div class="faq__item">
+          <dt class="faq__q">
+            <span class="faq__q-icon">Q</span>
+            <span>子ども連れで通えますか？</span>
+            <span class="faq__arrow" aria-hidden="true"></span>
           </dt>
-          <dd class="faq-a">
-            <span class="faq-a-icon">A</span>
-            はい、0歳〜のお子様連れ大歓迎です。個室プライベートジムですのでお子様が泣いても気になりません。授乳スペースもご用意しています。ただし、セキュリティ上ベビーシッターサービスは提供していませんのでご了承ください。
+          <dd class="faq__a">
+            <span class="faq__a-icon">A</span>
+            <span>0歳〜のお子様連れ大歓迎です。完全個室ですのでお子様が泣いても気になりません。授乳スペースもご用意しています。</span>
           </dd>
         </div>
 
-        <div class="faq-item">
-          <dt class="faq-q">
-            <span class="faq-q-icon">Q</span>
-            授乳中でも大丈夫ですか？
+        <div class="faq__item">
+          <dt class="faq__q">
+            <span class="faq__q-icon">Q</span>
+            <span>授乳中でも大丈夫ですか？</span>
+            <span class="faq__arrow" aria-hidden="true"></span>
           </dt>
-          <dd class="faq-a">
-            <span class="faq-a-icon">A</span>
-            はい、授乳中のママにも対応した食事プランを作成します。授乳中は必要カロリーや栄養素が変わりますので、管理栄養士と連携した食事指導を行います。
+          <dd class="faq__a">
+            <span class="faq__a-icon">A</span>
+            <span>はい。授乳中のママ向けに必要カロリーや栄養素を考えた食事プランを個別に作成します。安心してご参加ください。</span>
           </dd>
         </div>
 
-        <div class="faq-item">
-          <dt class="faq-q">
-            <span class="faq-q-icon">Q</span>
-            運動が苦手でも大丈夫ですか？
+        <div class="faq__item">
+          <dt class="faq__q">
+            <span class="faq__q-icon">Q</span>
+            <span>運動が苦手でも大丈夫ですか？</span>
+            <span class="faq__arrow" aria-hidden="true"></span>
           </dt>
-          <dd class="faq-a">
-            <span class="faq-a-icon">A</span>
-            もちろんです。ほとんどの会員様が運動未経験からスタートしています。トレーナーが一から丁寧に指導しますので、ご安心ください。ゆっくり無理なく始められるプログラムをご用意しています。
+          <dd class="faq__a">
+            <span class="faq__a-icon">A</span>
+            <span>もちろんです。ほとんどの会員様が運動未経験からスタートしています。トレーナーが一から丁寧に指導しますので、ご安心ください。</span>
           </dd>
         </div>
 
-        <div class="faq-item">
-          <dt class="faq-q">
-            <span class="faq-q-icon">Q</span>
-            体験後に無理に入会を勧められませんか？
+        <div class="faq__item">
+          <dt class="faq__q">
+            <span class="faq__q-icon">Q</span>
+            <span>体験後に入会を強く勧められませんか？</span>
+            <span class="faq__arrow" aria-hidden="true"></span>
           </dt>
-          <dd class="faq-a">
-            <span class="faq-a-icon">A</span>
-            一切ありません。体験ではカウンセリングとトレーニングをしっかり行い、ご希望があればプランをご案内します。その場での即決を迫ることはございませんのでご安心ください。
-          </dd>
-        </div>
-
-        <div class="faq-item">
-          <dt class="faq-q">
-            <span class="faq-q-icon">Q</span>
-            新大阪・東三国以外からでも通えますか？
-          </dt>
-          <dd class="faq-a">
-            <span class="faq-a-icon">A</span>
-            はい、淀川区・中津・十三・宮原エリアからも通っていただいています。駅からのアクセスが良いため、大阪市北区・西淀川区の方にも多くご利用いただいています。
+          <dd class="faq__a">
+            <span class="faq__a-icon">A</span>
+            <span>一切ありません。体験当日の即決を迫ることもございません。ご希望があればプランをご案内しますが、強引な勧誘は行いませんのでご安心ください。</span>
           </dd>
         </div>
 
@@ -316,45 +261,33 @@
     </div>
   </section>
 
-  <!-- ===== 最終CTA ===== -->
-  <section class="final-cta" id="cta">
-    <div class="container">
-      <p class="final-cta-label">今すぐ無料体験を予約する</p>
-      <h2 class="final-cta-title">
-        まずは一歩、<br />
-        踏み出してみませんか？
-      </h2>
-      <p class="final-cta-text">
-        体験は完全無料・強引な勧誘なし。<br />
-        LINEで簡単に申し込めます。
-      </p>
-      <a href="https://line.me/R/ti/p/@XXXXXXXX" class="line-btn final-line-btn" target="_blank" rel="noopener noreferrer">
-        <span class="line-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M12 2C6.48 2 2 6.03 2 11c0 2.95 1.55 5.57 3.97 7.28L5 21l2.93-1.4C9.19 20.18 10.57 20.5 12 20.5c5.52 0 10-4.03 10-9s-4.48-9-10-9zm1.14 12.13l-2.63-2.8-4.97 2.8 5.44-5.78 2.68 2.8 4.92-2.8-5.44 5.78z"/></svg>
-        </span>
+  <!-- ========== 最終CTA ========== -->
+  <section class="final-cta">
+    <div class="wrap">
+      <p class="final-cta__label">無料体験受付中</p>
+      <h2 class="final-cta__title">まずは一歩、<br>踏み出してみませんか？</h2>
+      <p class="final-cta__text">体験は完全無料・強引な勧誘なし。<br>LINEで簡単に申し込めます。</p>
+      <a href="https://line.me/R/ti/p/@XXXXXXXX" class="btn-line btn-line--lg" target="_blank" rel="noopener noreferrer">
+        <svg class="line-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path fill="#fff" d="M24 4C12.95 4 4 11.86 4 21.5c0 5.7 3.1 10.77 7.97 14.06L10 40l5.53-2.72C17.56 38.38 20.7 39 24 39c11.05 0 20-7.86 20-17.5S35.05 4 24 4z"/><path fill="#06C755" d="M24 7c-9.37 0-17 6.5-17 14.5 0 4.87 2.73 9.2 7 12.1l.6 5.4 4.7-2.3C20.96 37.5 22.46 38 24 38c9.37 0 17-6.5 17-14.5S33.37 7 24 7z"/><path fill="#fff" d="M34.5 25.5h-5v-7h-2v9h7zM21 18.5h-2v9h2zM28.5 22l-4-3.5v7l4-3.5z"/></svg>
         無料体験をLINEで申し込む
       </a>
-      <p class="final-cta-note">
-        ▼ LINEを友達追加してメッセージを送るだけ<br />
-        担当スタッフが24時間以内にご連絡します
-      </p>
+      <p class="final-cta__note">▼ LINEを友達追加してメッセージを送るだけ<br>担当スタッフが24時間以内にご連絡します</p>
     </div>
   </section>
 
-  <!-- ===== フッター ===== -->
+  <!-- ========== フッター ========== -->
   <footer class="footer">
-    <div class="container">
-      <p class="footer-name">SANGO FITNESS（サンゴフィットネス）</p>
-      <p class="footer-address">〒532-XXXX 大阪市淀川区X-X-X</p>
-      <p class="footer-hours">営業時間：10:00〜21:00（火曜定休）</p>
-      <nav class="footer-nav">
+    <div class="wrap">
+      <p class="footer__name">SANGO FITNESS（サンゴフィットネス）</p>
+      <p class="footer__info">〒532-XXXX 大阪市淀川区X-X-X</p>
+      <p class="footer__info">営業時間：10:00〜21:00（火曜定休）</p>
+      <nav class="footer__nav">
         <a href="#target">こんな方へ</a>
-        <a href="#reasons">選ばれる理由</a>
         <a href="#pricing">料金</a>
         <a href="#faq">よくある質問</a>
         <a href="/">運営会社</a>
       </nav>
-      <p class="footer-copy">&copy; 2024 SANGO FITNESS All Rights Reserved.</p>
+      <p class="footer__copy">&copy; 2024 SANGO FITNESS All Rights Reserved.</p>
     </div>
   </footer>
 
