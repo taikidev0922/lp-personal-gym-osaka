@@ -192,10 +192,12 @@ a { color: inherit; text-decoration: none; }
   flex-shrink: 0;
 }
 
-/* FV の btn-line は横幅を max-width で制限 */
+/* FV の btn-line */
 .fv .btn-line {
+  display: flex;
   max-width: 340px;
   width: 100%;
+  margin: 0 auto;
   font-size: 1rem;
   padding: 17px 24px;
 }
